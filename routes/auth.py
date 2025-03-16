@@ -115,7 +115,7 @@ def login():
                     db_session.commit()
                 
                 db_session.close()
-                return render_template('files/my_files.html')
+                #return render_template('files/my_files.html')
                 return redirect(url_for('main.index'))
             
             db_session.close()

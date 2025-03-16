@@ -384,7 +384,7 @@ em {
 
 strong {
   font-weight: bold;
-  background: linear-gradient(transparent 60%, rgba(249, 168, 38, 0.4) 40%);
+  /* background: linear-gradient(transparent 60%, rgba(249, 168, 38, 0.4) 40%); */
 }
 
 /* ホームページスタイル */
