@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}ファイルアップロード - テキストリーダー{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">ファイルアップロード</h2>
+    </div>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file" class="form-label">テキストファイル（.txt）を選択</label>
+                <input type="file" class="form-control" id="file" name="file" accept=".txt" required>
+                <small class="form-text">
+                    アップロードできるのはテキストファイル（.txt）のみです。<br>
+                    ファイルサイズの上限は16MBです。
+                </small>
+            </div>
+            <div class="form-group">
+                <p><strong>HTMLタグのサポート:</strong></p>
+                <ul>
+                    <li>ルビ: <code>&lt;ruby&gt;漢字&lt;rt&gt;かんじ&lt;/rt&gt;&lt;/ruby&gt;</code> → <ruby>漢字<rt>かんじ</rt></ruby></li>
+                    <li>強調: <code>&lt;em&gt;強調&lt;/em&gt;</code> → <em>強調</em></li>
+                    <li>重要: <code>&lt;strong&gt;重要&lt;/strong&gt;</code> → <strong>重要</strong></li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">アップロード</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

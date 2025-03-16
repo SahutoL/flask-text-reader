@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}プロフィール - テキストリーダー{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">プロフィール</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>ユーザー情報</h3>
+                <p><strong>ユーザー名:</strong> {{ user.username }}</p>
+                <p><strong>メールアドレス:</strong> {{ user.email }}</p>
+                <p><strong>登録日:</strong> {{ user.created_at.strftime('%Y年%m月%d日') }}</p>
+            </div>
+            <div class="col-md-6">
+                <h3>統計情報</h3>
+                <p><strong>アップロードしたファイル数:</strong> {{ user.files|length }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="{{ url_for('files.my_files') }}" class="btn btn-primary">マイファイル一覧</a>
+    </div>
+</div>
+{% endblock %}

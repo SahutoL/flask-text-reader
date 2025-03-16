@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}ユーザー登録 - テキストリーダー{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">ユーザー登録</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="username" class="form-label">ユーザー名</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                        <small class="form-text">英数字とアンダースコアのみ使用できます</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">メールアドレス</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">パスワード</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <small class="form-text">8文字以上必要です</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password" class="form-label">パスワード（確認）</label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">登録</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <p>すでにアカウントをお持ちの方は <a href="{{ url_for('auth.login') }}">こちら</a> からログインしてください。</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

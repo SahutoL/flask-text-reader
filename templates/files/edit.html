@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}ファイル編集 - テキストリーダー{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">ファイル名編集</h2>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label for="filename" class="form-label">ファイル名</label>
+                <input type="text" class="form-control" id="filename" name="filename" value="{{ file.original_filename }}" required>
+                <small class="form-text">拡張子（.txt）は自動的に追加されます</small>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">更新</button>
+                <a href="{{ url_for('files.my_files') }}" class="btn btn-secondary">キャンセル</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

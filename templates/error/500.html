@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}500 - サーバーエラー{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">500 - サーバーエラー</h2>
+    </div>
+    <div class="card-body">
+        <p>申し訳ありません。サーバーで問題が発生しました。</p>
+        <p>しばらく経ってからもう一度お試しください。</p>
+        <a href="{{ url_for('main.index') }}" class="btn btn-primary">ホームに戻る</a>
+    </div>
+</div>
+{% endblock %}

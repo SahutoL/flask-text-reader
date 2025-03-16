@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}ホーム - テキストリーダー{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1 class="hero-title">テキストリーダーへようこそ</h1>
+        <p class="hero-subtitle">あなたのテキストファイルを美しく読みやすく表示します</p>
+        {% if not g.user %}
+            <div>
+                <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">今すぐ登録</a>
+                <a href="{{ url_for('auth.login') }}" class="btn btn-secondary btn-lg">ログイン</a>
+            </div>
+        {% else %}
+            <div>
+                <a href="{{ url_for('files.my_files') }}" class="btn btn-primary btn-lg">マイファイル</a>
+                <a href="{{ url_for('files.upload_file') }}" class="btn btn-secondary btn-lg">ファイルをアップロード</a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="features">
+    <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3 class="feature-title">リーダー</h3>
+        <p class="feature-description">モダンなデザインで、長時間の読書も快適に楽しめます。</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3 class="feature-title">HTMLタグ対応</h3>
+        <p class="feature-description">ルビや強調などのHTMLタグに対応し、表現豊かなテキストを実現します。</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3 class="feature-title">レスポンシブデザイン</h3>
+        <p class="feature-description">スマートフォンやタブレットなど、あらゆるデバイスで快適に読書できます。</p>
+    </div>
+</section>
+
+<section class="card">
+    <div class="card-header">
+        <h2 class="card-title">使い方</h2>
+    </div>
+    <div class="card-body">
+        <ol>
+            <li>アカウントを作成またはログインします</li>
+            <li>テキストファイル（.txt）をアップロードします</li>
+            <li>マイファイル一覧からファイルを選択して読みます</li>
+            <li>必要に応じてファイル名の編集や削除ができます</li>
+        </ol>
+        <p>HTMLタグを使用することで、より豊かな表現が可能です：</p>
+        <ul>
+            <li><code>&lt;ruby&gt;漢字&lt;rt&gt;かんじ&lt;/rt&gt;&lt;/ruby&gt;</code> → <ruby>漢字<rt>かんじ</rt></ruby></li>
+            <li><code>&lt;em&gt;強調&lt;/em&gt;</code> → <em>強調</em></li>
+            <li><code>&lt;strong&gt;重要&lt;/strong&gt;</code> → <strong>重要</strong></li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

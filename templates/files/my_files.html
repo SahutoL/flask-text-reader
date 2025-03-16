@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}マイファイル - テキストリーダー{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">マイファイル</h2>
+    </div>
+    <div class="card-body">
+        {% if files %}
+            <ul class="file-list">
+                {% for file in files %}
+                    <li class="file-item">
+                        <div>
+                            <a href="{{ url_for('files.read_file', file_id=file.id) }}" class="file-name">{{ file.original_filename }}</a>
+                            <div class="file-meta">
+                                アップロード日: {{ file.created_at.strftime('%Y年%m月%d日 %H:%M') }}
+                                {% if file.updated_at != file.created_at %}
+                                    | 更新日: {{ file.updated_at.strftime('%Y年%m月%d日 %H:%M') }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <a href="{{ url_for('files.edit_file', file_id=file.id) }}" class="btn btn-secondary btn-sm">編集</a>
+                            <form method="post" action="{{ url_for('files.delete_file', file_id=file.id) }}" style="display: inline;" onsubmit="return confirm('本当に削除しますか？');">
+                                <button type="submit" class="btn btn-danger btn-sm">削除</button>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>ファイルがありません。新しいファイルをアップロードしてください。</p>
+        {% endif %}
+    </div>
+    <div class="card-footer">
+        <a href="{{ url_for('files.upload_file') }}" class="btn btn-primary">新規アップロード</a>
+    </div>
+</div>
+{% endblock %}
